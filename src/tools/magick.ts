@@ -1,10 +1,11 @@
 /**
  * ImageMagick magick command wrapper
  */
-import { execFileSync } from 'child_process';
+//import { execFileSync } from 'child_process';
 import * as fs from 'fs';
-import imagemagickCli from 'imagemagick-cli';
+//import imagemagickCli from 'imagemagick-cli';
 import { tempOpen } from '../utility';
+import sharp from 'sharp';
 
 export async function svgElementToPNGFile(
   svgElement: string,
@@ -13,13 +14,14 @@ export async function svgElementToPNGFile(
 ): Promise<string> {
   const info = await tempOpen({ prefix: 'crossnote-svg', suffix: '.svg' });
   fs.writeFileSync(info.fd, svgElement); // write svgElement to temp .svg file
-  const args = [info.path, pngFilePath];
+  //const args = [info.path, pngFilePath];
   try {
-    if (imageMagickPath && imageMagickPath.length) {
+    /* if (imageMagickPath && imageMagickPath.length) {
       await execFileSync(imageMagickPath, args);
     } else {
       await imagemagickCli.exec(`convert ${args.join(' ')}`);
-    }
+    } */
+    await sharp(info.path).png().toFile(pngFilePath);
   } catch (error) {
     throw new Error(
       'imagemagick-cli failure\n' +
