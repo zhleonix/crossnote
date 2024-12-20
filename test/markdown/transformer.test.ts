@@ -47,7 +47,9 @@ describe('test markdown transformer', () => {
         'utf-8',
       );
       const { outputString } = await transform(markdown);
-      expect(outputString.trim()).toEqual(expected.trim());
+      expect(outputString.trim().replace(/\n/g, '\r\n')).toEqual(
+        expected.trim(),
+      );
     });
   });
 });
