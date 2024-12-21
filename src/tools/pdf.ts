@@ -78,7 +78,7 @@ export function toSVGMarkdown(
           });
 
           let svgMarkdown = '';
-          const r = Math.random();
+          const r = Math.random().toString().substring(2);
 
           items.forEach((fileName) => {
             const match = fileName.match(

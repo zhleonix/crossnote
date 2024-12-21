@@ -159,13 +159,15 @@ export async function processGraphs(
     let displayPNGFilePath;
     if (useRelativeFilePath) {
       displayPNGFilePath =
-        path.relative(fileDirectoryPath, pngFilePath) + '?' + Math.random();
+        path.relative(fileDirectoryPath, pngFilePath) +
+        '?' +
+        Math.random().toString().substring(2);
     } else {
       displayPNGFilePath =
         '/' +
         path.relative(projectDirectoryPath, pngFilePath) +
         '?' +
-        Math.random();
+        Math.random().toString().substring(2);
     }
     displayPNGFilePath = displayPNGFilePath.replace(/\\/g, '/'); // fix windows path error.
 
@@ -307,13 +309,15 @@ export async function processGraphs(
         let displayPNGFilePath;
         if (useRelativeFilePath) {
           displayPNGFilePath =
-            path.relative(fileDirectoryPath, pngFilePath) + '?' + Math.random();
+            path.relative(fileDirectoryPath, pngFilePath) +
+            '?' +
+            Math.random().toString().substring(2);
         } else {
           displayPNGFilePath =
             '/' +
             path.relative(projectDirectoryPath, pngFilePath) +
             '?' +
-            Math.random();
+            Math.random().toString().substring(2);
         }
         clearCodeBlock(lines, start, end);
 
