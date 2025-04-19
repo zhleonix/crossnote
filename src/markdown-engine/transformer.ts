@@ -710,13 +710,13 @@ export async function transformMarkdown(
                 imageSrc =
                   path.relative(fileDirectoryPath, absoluteFilePath) +
                   '?' +
-                  (timestamp ?? Math.random());
+                  (timestamp ?? Math.random().toString().substring(2));
               } else {
                 imageSrc =
                   '/' +
                   path.relative(projectDirectoryPath, absoluteFilePath) +
                   '?' +
-                  (timestamp ?? Math.random());
+                  (timestamp ?? Math.random().toString().substring(2));
               }
               // enchodeURI(imageSrc) is wrong. It will cause issue on Windows
               // #414: https://github.com/shd101wyy/markdown-preview-enhanced/issues/414
